@@ -6,9 +6,12 @@ const breadRoutes = require('./controllers/bread')
 const app = express()
 
 //middlewares
+app.use(express.static('public'))
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
+app.use(express.urlencoded({extended: true}))
+
 
 //routes
 app.use('/bread', breadRoutes)
